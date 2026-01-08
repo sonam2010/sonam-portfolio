@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sonam Nayak | Software Test Engineer</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+      :root {
+        --gold: #d4af37;
+        --dark-gold: #9e8529;
+        --black: #111111;
+        --dark-gray: #222222;
+        --light-gray: #f5f5f5;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background-color: var(--black);
+        color: white;
+      }
+
+      .gold-text {
+        color: var(--gold);
+      }
+
+      .gold-bg {
+        background-color: var(--gold);
+      }
+
+      .hero-gradient {
+        background: linear-gradient(
+          135deg,
+          rgba(20, 20, 20, 1) 0%,
+          rgba(40, 40, 40, 1) 100%
+        );
+      }
+
+      .timeline-item:not(:last-child)::before {
+        content: "";
+        position: absolute;
+        left: 14px;
+        top: 24px;
+        height: calc(100% - 24px);
+        width: 2px;
+        background-color: var(--gold);
+      }
+
+      .nav-link {
+        position: relative;
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--gold);
+        transition: width 0.3s ease;
+      }
+
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      .card {
+        background: linear-gradient(
+          145deg,
+          rgba(30, 30, 30, 1) 0%,
+          rgba(20, 20, 20, 1) 100%
+        );
+        border: 1px solid rgba(212, 175, 55, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
+      }
+
+      .skill-bar {
+        height: 8px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+        overflow: hidden;
+      }
+
+      .skill-progress {
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          var(--dark-gold) 0%,
+          var(--gold) 100%
+        );
+        border-radius: 4px;
+      }
+
+      .btn-gold {
+        background-color: var(--gold);
+        color: var(--black);
+        transition: all 0.3s ease;
+      }
+
+      .btn-gold:hover {
+        background-color: var(--dark-gold);
+      }
+
+      .btn-outline {
+        border: 2px solid var(--gold);
+        color: var(--gold);
+        transition: all 0.3s ease;
+      }
+
+      .btn-outline:hover {
+        background-color: var(--gold);
+        color: var(--black);
+      }
+
+      .animate-element {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      .contact-input {
+        background-color: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: white;
+        transition: all 0.3s ease;
+      }
+
+      .contact-input:focus {
+        border-color: var(--gold);
+        box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+      }
+
+      /* Circular progress bars */
+      .circular-progress {
+        position: relative;
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+        background: conic-gradient(
+          var(--gold) 0deg,
+          rgba(255, 255, 255, 0.1) 0deg
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .circular-progress::before {
+        content: "";
+        position: absolute;
+        height: 80px;
+        width: 80px;
+        border-radius: 50%;
+        background-color: var(--black);
+      }
+
+      .progress-value {
+        position: relative;
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--gold);
+      }
+
+      /* Loading animation */
+      .loader-line {
+        width: 100%;
+        height: 3px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: linear-gradient(
+          to right,
+          transparent,
+          var(--gold),
+          transparent
+        );
+        z-index: 999;
+        animation: loading 2s infinite;
+      }
+
+      @keyframes loading {
+        0% {
+          transform: translateX(-100%);
+        }
+        100% {
+          transform: translateX(100%);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loader" class="loader-line"></div>
+
+    <!-- Navigation -->
+    <nav
+      class="fixed w-full z-50 bg-black bg-opacity-90 backdrop-filter backdrop-blur-lg"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <div class="flex-shrink-0">
+            <a href="#" class="flex items-center">
+              <span class="text-white font-bold text-xl"
+                >QA<span class="gold-text">Tester</span></span
+              >
+            </a>
+          </div>
+          <div class="hidden md:block">
+            <div class="ml-10 flex items-baseline space-x-4">
+              <a
+                href="#home"
+                class="nav-link px-3 py-2 text-sm font-medium text-white hover:text-gold"
+                >Home</a
+              >
+              <a
+                href="#about"
+                class="nav-link px-3 py-2 text-sm font-medium text-white hover:text-gold"
+                >About</a
+              >
+              <a
+                href="#experience"
+                class="nav-link px-3 py-2 text-sm font-medium text-white hover:text-gold"
+                >Experience</a
+              >
+              <a
+                href="#skills"
+                class="nav-link px-3 py-2 text-sm font-medium text-white hover:text-gold"
+                >Skills</a
+              >
+              <a
+                href="#projects"
+                class="nav-link px-3 py-2 text-sm font-medium text-white hover:text-gold"
+                >Projects</a
+              >
+              <a
+                href="#contact"
+                class="nav-link px-3 py-2 text-sm font-medium text-white hover:text-gold"
+                >Contact</a
+              >
+            </div>
+          </div>
+          <div class="md:hidden">
+            <button
+              type="button"
+              id="mobile-menu-button"
+              class="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-gold focus:outline-none"
+            >
+              <svg
+                class="h-6 w-6"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile menu, show/hide based on menu state -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-black bg-opacity-95 shadow-lg"
+      >
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          <a
+            href="#home"
+            class="block px-3 py-2 text-base font-medium text-white hover:text-gold"
+            >Home</a
+          >
+          <a
+            href="#about"
+            class="block px-3 py-2 text-base font-medium text-white hover:text-gold"
+            >About</a
+          >
+          <a
+            href="#experience"
+            class="block px-3 py-2 text-base font-medium text-white hover:text-gold"
+            >Experience</a
+          >
+          <a
+            href="#skills"
+            class="block px-3 py-2 text-base font-medium text-white hover:text-gold"
+            >Skills</a
+          >
+          <a
+            href="#projects"
+            class="block px-3 py-2 text-base font-medium text-white hover:text-gold"
+            >Projects</a
+          >
+          <a
+            href="#contact"
+            class="block px-3 py-2 text-base font-medium text-white hover:text-gold"
+            >Contact</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-gradient min-h-screen flex items-center">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div class="animate-element">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">
+              Hi, I'm <span class="gold-text">Sonam Nayak</span>
+            </h1>
+            <h2 class="text-2xl md:text-3xl font-medium mb-6">
+              Software <span class="gold-text">Test Engineer</span>
+            </h2>
+            <p class="text-gray-300 mb-8 text-lg">
+              Results-driven Software Test Engineer with 1.8+ years of
+              experience in Manual Testing, Automation Testing, API Testing, and
+              IoT-based applications. Skilled in Selenium WebDriver, Java,
+              Postman, and delivering high-quality software.
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <!-- <a
+                href="javascript:void(0)"
+                onclick="downloadCV()"
+                class="btn-gold px-6 py-3 rounded-full font-medium"
+                >Downlode CV</a
+              > -->
+              <a
+                href="./Sonam_Nayak_CV.pdf"
+                target="_blank"
+                download
+                class="btn-gold px-6 py-3 rounded-full font-medium"
+              >
+                Download CV
+              </a>
+
+              <a
+                href="#projects"
+                class="btn-outline px-6 py-3 rounded-full font-medium"
+                >View Projects</a
+              >
+            </div>
+          </div>
+          <div class="animate-element">
+            <div class="relative">
+              <div
+                class="absolute -top-5 -left-5 w-24 h-24 border-t-4 border-l-4 border-gold"
+              ></div>
+              <div
+                class="absolute -bottom-5 -right-5 w-24 h-24 border-b-4 border-r-4 border-gold"
+              ></div>
+              <img
+                src="/2.jpeg"
+                alt="QA Testing"
+                class="w-full h-auto rounded-lg shadow-2xl"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 md:py-24 bg-black">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 animate-element">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            About <span class="gold-text">Me</span>
+          </h2>
+          <div class="w-20 h-1 bg-gold mx-auto"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div class="animate-element">
+            <div class="relative group">
+              <div
+                class="absolute -inset-1 bg-gradient-to-r from-gold to-yellow-500 opacity-25 group-hover:opacity-50 blur-lg transition duration-1000"
+              ></div>
+              <div class="relative">
+                <img
+                  src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                  alt="Quality Assurance"
+                  class="rounded-lg shadow-xl"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="animate-element">
+            <h3 class="text-2xl font-bold mb-4">
+              Professional <span class="gold-text">QA Tester</span> with a
+              passion for quality
+            </h3>
+            <p class="text-gray-300 mb-6">
+              I am a detail-oriented Software Test Engineer with hands-on
+              experience in Manual and Automation Testing, API Testing, UI/UX
+              Testing, and IoT-based projects.
+            </p>
+            <p class="text-gray-300 mb-8">
+              I focus on improving product quality, performance, and user
+              experience through structured testing methodologies.
+            </p>
+
+            <div class="grid grid-cols-2 gap-4 mb-8">
+              <div>
+                <p class="text-gray-400">Name</p>
+                <p>Sonam Nayak</p>
+              </div>
+              <div>
+                <p class="text-gray-400">Experience</p>
+                <p>1.8 Years</p>
+              </div>
+              <div>
+                <p class="text-gray-400">Email</p>
+                <p>sonamnayak282012@gmail.com</p>
+              </div>
+              <div>
+                <p class="text-gray-400">Location</p>
+                <p>Bhubaneswar, Odisha, India</p>
+              </div>
+            </div>
+
+            <a
+              href="#contact"
+              class="btn-gold px-6 py-3 rounded-full font-medium inline-block"
+              >Contact Me</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-16 md:py-24 bg-gray-900">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 animate-element">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            Work <span class="gold-text">Experience</span>
+          </h2>
+          <div class="w-20 h-1 bg-gold mx-auto"></div>
+        </div>
+
+        <div class="space-y-8">
+          <!-- Timeline -->
+          <div class="relative pl-8 animate-element">
+            <div class="timeline-item relative pl-8 pb-8">
+              <div
+                class="absolute left-0 top-1 w-8 h-8 rounded-full bg-black border-4 border-gold"
+              ></div>
+              <div class="card rounded-lg p-6">
+                <h3 class="text-xl font-bold mb-2">Jr. QA Engineer</h3>
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-gold font-medium">Appticode Pvt. Ltd.</span>
+                  <span class="text-gray-400">Jan 2025 – Present</span>
+                </div>
+                <ul class="list-disc list-inside text-gray-300 space-y-2">
+                  <li>
+                    Perform end-to-end manual testing for web and mobile
+                    applications
+                  </li>
+                  <li>
+                    Design, execute, and maintain test cases and test scenarios
+                  </li>
+                  <li>
+                    Conduct API testing using Postman to validate backend
+                    services
+                  </li>
+                  <li>Log, track, and manage defects using JIRA</li>
+                  <li>
+                    Execute smoke, regression, functional, and non-functional
+                    testing
+                  </li>
+                  <li>
+                    Collaborate with developers and product teams to ensure
+                    quality releases
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="timeline-item relative pl-8 pb-8 animate-element">
+              <div
+                class="absolute left-0 top-1 w-8 h-8 rounded-full bg-black border-4 border-gold"
+              ></div>
+              <div class="card rounded-lg p-6">
+                <h3 class="text-xl font-bold mb-2">QA Trainee</h3>
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-gold font-medium">Appticode Pvt. Ltd.</span>
+                  <span class="text-gray-400">Aug 2024 – Jan 2025</span>
+                </div>
+                <ul class="list-disc list-inside text-gray-300 space-y-2">
+                  <li>Gained hands-on experience in manual and API testing</li>
+                  <li>
+                    Prepared and executed test cases based on functional
+                    requirements
+                  </li>
+                  <li>
+                    Validated UI/UX workflows and application responsiveness
+                  </li>
+                  <li>Reported bugs and tracked issues using JIRA</li>
+                  <li>Supported regression testing during release cycles</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="timeline-item relative pl-8 animate-element">
+              <div
+                class="absolute left-0 top-1 w-8 h-8 rounded-full bg-black border-4 border-gold"
+              ></div>
+              <div class="card rounded-lg p-6">
+                <h3 class="text-xl font-bold mb-2">QA Intern</h3>
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-gold font-medium">Appticode Pvt. Ltd.</span>
+                  <span class="text-gray-400">May 2024 – Aug 2024</span>
+                </div>
+                <ul class="list-disc list-inside text-gray-300 space-y-2">
+                  <li>Assisted in manual testing of web applications</li>
+                  <li>
+                    Learned software testing life cycle (STLC) and QA processes
+                  </li>
+                  <li>Executed basic functional and smoke test cases</li>
+                  <li>
+                    Documented defects and test results under guidance of senior
+                    QA engineers
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-16 md:py-24 bg-black">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 animate-element">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            Technical <span class="gold-text">Skills</span>
+          </h2>
+          <div class="w-20 h-1 bg-gold mx-auto"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+          <!-- Left column - Linear progress bars -->
+          <div class="animate-element">
+            <h3 class="text-2xl font-bold mb-8">
+              Testing <span class="gold-text">Expertise</span>
+            </h3>
+
+            <div class="space-y-6">
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="font-medium">Manual Testing</span>
+                  <span class="gold-text">95%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 95%"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="font-medium">Test Case Writing</span>
+                  <span class="gold-text">90%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 90%"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="font-medium">Regression Testing</span>
+                  <span class="gold-text">80%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 85%"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="font-medium">API Testing</span>
+                  <span class="gold-text">85%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 80%"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="font-medium">Automated Testing</span>
+                  <span class="gold-text">70%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 75%"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="font-medium">Performance Testing</span>
+                  <span class="gold-text">70%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" style="width: 70%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right column - Tools & Technologies -->
+          <div class="animate-element">
+            <h3 class="text-2xl font-bold mb-8">
+              Tools & <span class="gold-text">Technologies</span>
+            </h3>
+
+            <div class="grid grid-cols-2 gap-4">
+              <div class="card rounded-lg p-6 flex items-center">
+                <i class="fas fa-bug text-gold text-2xl mr-4"></i>
+                <div>
+                  <h4 class="font-medium">JIRA</h4>
+                  <p class="text-sm text-gray-400">Issue Tracking</p>
+                </div>
+              </div>
+
+              <div class="card rounded-lg p-6 flex items-center">
+                <i class="fas fa-check-circle text-gold text-2xl mr-4"></i>
+                <div>
+                  <h4 class="font-medium">Selenium</h4>
+                  <p class="text-sm text-gray-400">Test Automation</p>
+                </div>
+              </div>
+
+              <div class="card rounded-lg p-6 flex items-center">
+                <i class="fas fa-file-code text-gold text-2xl mr-4"></i>
+                <div>
+                  <h4 class="font-medium">Postman</h4>
+                  <p class="text-sm text-gray-400">API Testing</p>
+                </div>
+              </div>
+
+              <div class="card rounded-lg p-6 flex items-center">
+                <i class="fas fa-tachometer-alt text-gold text-2xl mr-4"></i>
+                <div>
+                  <h4 class="font-medium">JMeter</h4>
+                  <p class="text-sm text-gray-400">Performance Testing</p>
+                </div>
+              </div>
+
+              <div class="card rounded-lg p-6 flex items-center">
+                <i class="fas fa-robot text-gold text-2xl mr-4"></i>
+                <div>
+                  <h4 class="font-medium">Cypress</h4>
+                  <p class="text-sm text-gray-400">E2E Testing</p>
+                </div>
+              </div>
+
+              <div class="card rounded-lg p-6 flex items-center">
+                <i class="fas fa-sitemap text-gold text-2xl mr-4"></i>
+                <div>
+                  <h4 class="font-medium">TestRail</h4>
+                  <p class="text-sm text-gray-400">Test Management</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Additional Skills -->
+        <div class="mt-16 animate-element">
+          <h3 class="text-2xl font-bold mb-8 text-center">
+            Additional <span class="gold-text">Competencies</span>
+          </h3>
+
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div class="text-center">
+              <div
+                class="circular-progress mx-auto"
+                style="
+                  background: conic-gradient(
+                    var(--gold) 324deg,
+                    rgba(255, 255, 255, 0.1) 0deg
+                  );
+                "
+              >
+                <span class="progress-value">90%</span>
+              </div>
+              <h4 class="mt-4 font-medium">Communication</h4>
+            </div>
+
+            <div class="text-center">
+              <div
+                class="circular-progress mx-auto"
+                style="
+                  background: conic-gradient(
+                    var(--gold) 306deg,
+                    rgba(255, 255, 255, 0.1) 0deg
+                  );
+                "
+              >
+                <span class="progress-value">85%</span>
+              </div>
+              <h4 class="mt-4 font-medium">Problem Solving</h4>
+            </div>
+
+            <div class="text-center">
+              <div
+                class="circular-progress mx-auto"
+                style="
+                  background: conic-gradient(
+                    var(--gold) 288deg,
+                    rgba(255, 255, 255, 0.1) 0deg
+                  );
+                "
+              >
+                <span class="progress-value">80%</span>
+              </div>
+              <h4 class="mt-4 font-medium">Agile Methodologies</h4>
+            </div>
+
+            <div class="text-center">
+              <div
+                class="circular-progress mx-auto"
+                style="
+                  background: conic-gradient(
+                    var(--gold) 306deg,
+                    rgba(255, 255, 255, 0.1) 0deg
+                  );
+                "
+              >
+                <span class="progress-value">85%</span>
+              </div>
+              <h4 class="mt-4 font-medium">Team Collaboration</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 md:py-24 bg-gray-900">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 animate-element">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            Project <span class="gold-text">Experience</span>
+          </h2>
+          <div class="w-20 h-1 bg-gold mx-auto"></div>
+          <p class="mt-6 text-gray-300 max-w-2xl mx-auto">
+            Real-world projects where I contributed as a Software Test Engineer,
+            ensuring functionality, performance, and quality.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Project 1 -->
+          <div class="card rounded-lg p-6 animate-element">
+            <h3 class="text-xl font-bold mb-2">
+              Human Resource Management System (HRMS)
+            </h3>
+            <p class="text-gray-300 mb-4">
+              Performed end-to-end testing of HRMS modules including employee
+              management, attendance, payroll, leave, performance, and training.
+            </p>
+            <ul class="list-disc list-inside text-gray-400 space-y-1 mb-4">
+              <li>Functional & regression testing across all modules</li>
+              <li>Validated role-based access (Admin, HR, Employee)</li>
+              <li>API testing for payroll & attendance integrations</li>
+              <li>UI/UX, security, and data integrity testing</li>
+            </ul>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2 py-1 bg-gray-800 text-gold text-xs rounded-full"
+                >Manual Testing</span
+              >
+              <span class="px-2 py-1 bg-gray-800 text-gold text-xs rounded-full"
+                >API Testing</span
+              >
+              <span class="px-2 py-1 bg-gray-800 text-gold text-xs rounded-full"
+                >JIRA</span
+              >
+              <span class="px-2 py-1 bg-gray-800 text-gold text-xs rounded-full"
+                >Regression</span
+              >
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="card rounded-lg p-6 animate-element">
+            <h3 class="text-xl font-bold mb-2">Jewellery ERP System</h3>
+            <p class="text-gray-300 mb-4">
+              Tested ERP software designed for jewellery retailers, wholesalers,
+              and suppliers to ensure accuracy and reliability.
+            </p>
+            <ul class="list-disc list-inside text-gray-400 space-y-1 mb-4">
+              <li>Inventory, billing, CRM, HR & accounting testing</li>
+              <li>Validated barcode & RFID integrations</li>
+              <li>Checked metal-to-amount conversion logic</li>
+              <li>Multi-branch & role-based access testing</li>
+            </ul>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2 py-1 bg-gray-800 text-gold text-xs rounded-full"
+                >ERP Testing</span
+              >
+              <span class="px-2 py-1 bg-gray-800 text-gold text-xs rounded-full"
+                >Functional Testing</span
+              >
+              <span class="px-2 py-1 bg-gray-800 text-gold text-xs rounded-full"
+                >Data Validation</span
+              >
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="card rounded-lg p-6 animate-element">
+            <h3 class="text-xl font-bold mb-2">
+              Sanatan Application (Web & Mobile)
+            </h3>
+            <p class="text-gray-300 mb-4">
+              Conducted complete manual testing of a web and mobile application
+              to ensure a stable and user-friendly release.
+            </p>
+            <ul class="list-disc list-inside text-gray-400 space-y-1 mb-4">
+              <li>Prepared and executed test cases & scenarios</li>
+              <li>Performed functional, UI/UX & regression testing</li>
+              <li>Logged and tracked defects using JIRA</li>
+              <li>Delivered detailed test reports</li>
+            </ul>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2 py-1 bg-gray-800 text-gold text-xs rounded-full"
+                >Manual Testing</span
+              >
+              <span class="px-2 py-1 bg-gray-800 text-gold text-xs rounded-full"
+                >Mobile App Testing</span
+              >
+              <span class="px-2 py-1 bg-gray-800 text-gold text-xs rounded-full"
+                >UI/UX</span
+              >
+            </div>
+          </div>
+
+          <!-- Project 4 -->
+          <div class="card rounded-lg p-6 animate-element">
+            <h3 class="text-xl font-bold mb-2">IoT Apparel Tracking System</h3>
+            <p class="text-gray-300 mb-4">
+              Tested an IoT-based real-time apparel tracking system deployed in
+              live production environments.
+            </p>
+            <ul class="list-disc list-inside text-gray-400 space-y-1 mb-4">
+              <li>Validated sensor data & real-time transmission</li>
+              <li>Tracked productivity metrics (Man, Machine, Material)</li>
+              <li>Verified performance and accuracy in live units</li>
+              <li>Ensured system stability and data consistency</li>
+            </ul>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2 py-1 bg-gray-800 text-gold text-xs rounded-full"
+                >IoT Testing</span
+              >
+              <span class="px-2 py-1 bg-gray-800 text-gold text-xs rounded-full"
+                >Live Testing</span
+              >
+              <span class="px-2 py-1 bg-gray-800 text-gold text-xs rounded-full"
+                >Data Validation</span
+              >
+            </div>
+          </div>
+          <!-- Project 5 -->
+          <div class="card rounded-lg p-6 animate-element">
+            <h3 class="text-xl font-bold mb-2">Appticode Corporate Website</h3>
+            <p class="text-gray-300 mb-4">
+              Tested the official Appticode website for quality, usability, and
+              cross-browser compatibility.
+            </p>
+            <ul class="list-disc list-inside text-gray-400 space-y-1 mb-4">
+              <li>Validated forms, links, and navigation flows</li>
+              <li>Performed cross-browser & responsive testing</li>
+              <li>Reported UI & functional issues</li>
+              <li>Improved user experience through feedback</li>
+            </ul>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2 py-1 bg-gray-800 text-gold text-xs rounded-full"
+                >Web Testing</span
+              >
+              <span class="px-2 py-1 bg-gray-800 text-gold text-xs rounded-full"
+                >UI Testing</span
+              >
+              <span class="px-2 py-1 bg-gray-800 text-gold text-xs rounded-full"
+                >Cross-Browser</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-12 text-center animate-element">
+          <a href="#" class="btn-outline px-6 py-3 rounded-full font-medium"
+            >View All Projects</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <!-- <section class="py-16 md:py-24 bg-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-element">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Client <span class="gold-text">Feedback</span></h2>
+                <div class="w-20 h-1 bg-gold mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                 Testimonial 1
+                <div class="card rounded-lg p-8 animate-element">
+                    <div class="flex items-center mb-6">
+                        <div class="text-3xl text-gold mr-4">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <div class="text-gold">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-6">
+                        "John's attention to detail was exceptional. He identified critical issues that could have impacted our user experience significantly. His thorough testing approach gave us confidence in our product launch."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-medium">Michael Thompson</h4>
+                            <p class="text-sm text-gray-400">Product Manager, TechSolutions</p>
+                        </div>
+                    </div>
+                </div>
+                
+                 Testimonial 2
+                <div class="card rounded-lg p-8 animate-element">
+                    <div class="flex items-center mb-6">
+                        <div class="text-3xl text-gold mr-4">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <div class="text-gold">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-6">
+                        "The automated testing framework that John implemented saved our team countless hours of manual testing while increasing our test coverage. His technical expertise and problem-solving skills are outstanding."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-medium">Sarah Johnson</h4>
+                            <p class="text-sm text-gray-400">CTO, InnovateApps</p>
+                        </div>
+                    </div>
+                </div>
+                
+                 Testimonial 3
+                <div class="card rounded-lg p-8 animate-element">
+                    <div class="flex items-center mb-6">
+                        <div class="text-3xl text-gold mr-4">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <div class="text-gold">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-6">
+                        "John's communication skills made collaboration with our development team seamless. He was able to clearly document issues and provide steps to reproduce them, which greatly improved our efficiency in resolving bugs."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Client" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-medium">David Chen</h4>
+                            <p class="text-sm text-gray-400">Lead Developer, WebTech</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 md:py-24 bg-gray-900">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 animate-element">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            Get In <span class="gold-text">Touch</span>
+          </h2>
+          <div class="w-20 h-1 bg-gold mx-auto"></div>
+          <p class="mt-6 text-gray-300 max-w-2xl mx-auto">
+            Interested in working together? Feel free to reach out for
+            collaborations or just a friendly hello
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <!-- Contact form -->
+          <div class="animate-element">
+            <form class="space-y-6">
+              <div>
+                <label
+                  for="name"
+                  class="block text-sm font-medium text-gray-300 mb-1"
+                  >Name</label
+                >
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  class="contact-input w-full p-3 rounded-lg bg-gray-800 focus:outline-none"
+                />
+              </div>
+
+              <div>
+                <label
+                  for="email"
+                  class="block text-sm font-medium text-gray-300 mb-1"
+                  >Email</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="contact-input w-full p-3 rounded-lg bg-gray-800 focus:outline-none"
+                />
+              </div>
+
+              <div>
+                <label
+                  for="subject"
+                  class="block text-sm font-medium text-gray-300 mb-1"
+                  >Subject</label
+                >
+                <input
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  class="contact-input w-full p-3 rounded-lg bg-gray-800 focus:outline-none"
+                />
+              </div>
+
+              <div>
+                <label
+                  for="message"
+                  class="block text-sm font-medium text-gray-300 mb-1"
+                  >Message</label
+                >
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  class="contact-input w-full p-3 rounded-lg bg-gray-800 focus:outline-none"
+                ></textarea>
+              </div>
+
+              <div>
+                <button
+                  type="submit"
+                  class="btn-gold w-full py-3 px-4 rounded-lg font-medium"
+                >
+                  Send Message
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Contact information -->
+          <div class="animate-element">
+            <div class="card rounded-lg p-8 mb-8">
+              <h3 class="text-2xl font-bold mb-6">
+                Contact <span class="gold-text">Information</span>
+              </h3>
+
+              <div class="space-y-4">
+                <div class="flex items-center">
+                  <div
+                    class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center mr-4"
+                  >
+                    <i class="fas fa-map-marker-alt text-gold"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-medium">Location</h4>
+                    <p class="text-gray-300">Bhubaneswar, Odisha, India</p>
+                  </div>
+                </div>
+
+                <div class="flex items-center">
+                  <div
+                    class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center mr-4"
+                  >
+                    <i class="fas fa-envelope text-gold"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-medium">Email</h4>
+                    <p class="text-gray-300">sonamnayak282012@gmail.com</p>
+                  </div>
+                </div>
+
+                <div class="flex items-center">
+                  <div
+                    class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center mr-4"
+                  >
+                    <i class="fas fa-phone text-gold"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-medium">Phone</h4>
+                    <p class="text-gray-300">+91 7735483631</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card rounded-lg p-8">
+              <h3 class="text-xl font-bold mb-6">Follow Me</h3>
+
+              <div class="flex space-x-4">
+                <a
+                  href="https://linkedin.com/in/sonam-nayak-a318b4234"
+                  class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gold hover:bg-gold hover:text-black transition-colors duration-300"
+                >
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-black">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="mb-4 md:mb-0">
+            <a href="#" class="flex items-center">
+              <span class="text-white font-bold text-xl"
+                >QA<span class="gold-text">Tester</span></span
+              >
+            </a>
+          </div>
+          <div class="mb-4 md:mb-0">
+            <ul class="flex space-x-6">
+              <li>
+                <a href="#home" class="text-gray-300 hover:text-gold">Home</a>
+              </li>
+              <li>
+                <a href="#about" class="text-gray-300 hover:text-gold">About</a>
+              </li>
+              <li>
+                <a href="#experience" class="text-gray-300 hover:text-gold"
+                  >Experience</a
+                >
+              </li>
+              <li>
+                <a href="#skills" class="text-gray-300 hover:text-gold"
+                  >Skills</a
+                >
+              </li>
+              <li>
+                <a href="#projects" class="text-gray-300 hover:text-gold"
+                  >Projects</a
+                >
+              </li>
+              <li>
+                <a href="#contact" class="text-gray-300 hover:text-gold"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center"
+        >
+          <p class="text-gray-400 text-sm">
+         QA Tester Portfolio. All rights reserved.
+          </p>
+          <p class="text-gray-400 text-sm mt-2 md:mt-0">
+            Designed with <span class="text-gold">❤</span> by Sonam Nayak
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <button
+      id="back-to-top"
+      class="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-gold text-black flex items-center justify-center opacity-0 invisible transition-all duration-300"
+    >
+      <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script>
+      // Mobile menu toggle
+      const mobileMenuButton = document.getElementById("mobile-menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      mobileMenuButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      // Back to top button
+      const backToTopButton = document.getElementById("back-to-top");
+
+      window.addEventListener("scroll", () => {
+        if (window.pageYOffset > 300) {
+          backToTopButton.classList.remove("opacity-0", "invisible");
+          backToTopButton.classList.add("opacity-100", "visible");
+        } else {
+          backToTopButton.classList.remove("opacity-100", "visible");
+          backToTopButton.classList.add("opacity-0", "invisible");
+        }
+      });
+
+      backToTopButton.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+
+      // Intersection Observer for animations
+      const animateElements = document.querySelectorAll(".animate-element");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              anime({
+                targets: entry.target,
+                opacity: [0, 1],
+                translateY: [20, 0],
+                easing: "easeOutQuad",
+                duration: 800,
+                delay: 100,
+              });
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      animateElements.forEach((element) => {
+        observer.observe(element);
+      });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute("href");
+          const targetElement = document.querySelector(targetId);
+
+          if (targetElement) {
+            // Close mobile menu if open
+            if (!mobileMenu.classList.contains("hidden")) {
+              mobileMenu.classList.add("hidden");
+            }
+
+            // Scroll to target
+            window.scrollTo({
+              top: targetElement.offsetTop - 80, // Account for fixed header
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+
+      // Form submission handling (for demo purposes)
+      const contactForm = document.querySelector("form");
+
+      if (contactForm) {
+        contactForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // For demo purposes, just show an alert
+          alert(
+            "Thank you for your message! This is a demo form, so no actual message was sent."
+          );
+
+          // Reset form
+          contactForm.reset();
+        });
+      }
+
+      // Remove loader after page load
+      window.addEventListener("load", () => {
+        setTimeout(() => {
+          const loader = document.getElementById("loader");
+          if (loader) {
+            loader.style.display = "none";
+          }
+        }, 1000);
+      });
+    </script>
+    <script>
+      function downloadCV() {
+        const link = document.createElement("a");
+        link.href = "Sonam_Nayak_CV.pdf"; // CV file name
+        link.download = "Sonam_Nayak_CV.pdf";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+    </script>
+  </body>
+</html>
